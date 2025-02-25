@@ -9,8 +9,35 @@
     font: inherit;
 }
 
+@font-face {
+    font-family: "Inter";
+    src: 
+        url(resources/fonts/Inter-VariableFont_opsz\,wght.woff2) format("woff2 supports variation"),
+        url(resources/fonts/Inter-VariableFont_opsz\,wght.woff2) format("woff2-variations");
+    font-weight: 100 900;
+}
+
 body {
-    font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    --regular: 400;
+    --medium: 500;
+    --bold: 700;
+    --extra-bold: 800;
+
+    --no-emphasis-clr: #818181;
+    --sidebar-bg-clr: #FCFBFA;
+    --primary-accent-clr: #EA1717;
+    --secondary-accent-clr: #1F7CC0;
+    --selected-clr: #FFE5D7; 
+    --hover-clr: #EFEFEF;
+    --priority-text-clr: white;
+    --high-priority-clr: #FF5757;
+    --medium-priority-clr: #FFB156;
+    --low-priority-clr: #5BBAFF;
+    --deactivated-clr: #BCBCBC;
+
+
+    font-family: "Inter", system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-weight: var(--regular);
     min-height: 100vh;
 }
 
@@ -22,3 +49,112 @@ img, svg, picture, video {
 p {
     line-height: 1.5;
 }
+
+.page-container {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+}
+
+.sidebar {
+    background-color: var(--sidebar-bg-clr);
+    min-height: 100vh;
+    position: sticky;
+    top: 0;
+    padding: 1.5rem;
+}
+
+button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+nav button, .sidebar .head {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+}
+
+nav button {
+    gap: 1rem;
+    padding: 0.3em;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.sidebar .head {
+    justify-content: space-between;
+}
+
+.head {
+    margin-bottom: 1rem;
+}
+
+.icon {
+    width: 1.5rem;
+    fill: var(--no-emphasis-clr);
+}
+
+#menu-toggle .icon {
+    width: 2rem;
+}
+
+#menu-toggle .icon:hover {
+    fill: var(--primary-accent-clr)
+}
+
+h1, h2 {
+    font-weight: var(--extra-bold);
+}
+
+h1 {
+    font-size: 1.6rem;
+}
+
+h2 {
+    font-size: 1.4rem;
+}
+
+h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.6rem;
+}
+
+h3, .add-task, .add-project {
+    font-weight: var(--medium);
+}
+
+nav button:hover {
+    background-color: var(--hover-clr);
+}
+
+nav button.selected {
+    background-color: var(--selected-clr);
+    color: var(--primary-accent-clr);
+}
+
+nav button.selected .icon {
+    fill: var(--primary-accent-clr);
+}
+
+nav.tasks {
+    margin-bottom: 3rem;
+}
+
+.add-task {
+    color: var(--primary-accent-clr);
+}
+
+.add-task .icon {
+    fill: var(--primary-accent-clr);
+}
+
+.add-project {
+    color: var(--secondary-accent-clr);
+}
+
+.add-project .icon {
+    fill: var(--secondary-accent-clr)
+}
+
