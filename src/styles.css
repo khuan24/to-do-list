@@ -9,6 +9,10 @@
     font: inherit;
 }
 
+dialog {
+    margin: auto;
+}
+
 @font-face {
     font-family: "Inter";
     src: 
@@ -66,34 +70,42 @@ p {
 button {
     background-color: transparent;
     border: none;
+    border-radius: 5px;
     cursor: pointer;
     transition: 0.3s;
+    padding: 0.3em;
 }
 
-nav button, .sidebar .head {
+nav button, .head, .head button {
     display: flex;
     align-items: center;
     white-space: nowrap;
 }
 
+.add-task {
+    gap: 0.4rem;
+}
+
 nav button {
-    gap: 1rem;
-    padding: 0.3em;
-    border-radius: 5px;
+    gap: 0.4rem;
     width: 100%;
 }
 
-.sidebar .head {
+.head {
     justify-content: space-between;
 }
 
-.head {
+.sidebar .head {
     margin-bottom: 1rem;
 }
 
 .icon {
     width: 1.5rem;
     fill: var(--no-emphasis-clr);
+}
+
+#menu-toggle {
+    padding: 0.1em 0.2em;
 }
 
 #menu-toggle .icon {
@@ -109,7 +121,7 @@ h1, h2 {
 }
 
 h1 {
-    font-size: 1.6rem;
+    font-size: 1.7rem;
 }
 
 h2 {
@@ -125,16 +137,16 @@ h3, .add-task, .add-project {
     font-weight: var(--medium);
 }
 
-nav button:hover {
+button:hover {
     background-color: var(--hover-clr);
 }
 
-nav button.selected {
+button.selected {
     background-color: var(--selected-clr);
     color: var(--primary-accent-clr);
 }
 
-nav button.selected .icon {
+button.selected .icon {
     fill: var(--primary-accent-clr);
 }
 
@@ -156,5 +168,18 @@ nav.tasks {
 
 .add-project .icon {
     fill: var(--secondary-accent-clr)
+}
+
+.task-display {
+    padding: 2rem 5rem;
+}
+
+.task-display .head {
+    margin-bottom: 1.8rem;
+}
+
+.date {
+    color: var(--no-emphasis-clr);
+    font-weight: bold;
 }
 

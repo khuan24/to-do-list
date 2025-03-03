@@ -54,8 +54,47 @@
             </nav>
         </div>
         <div class="task-display">
-            <h1 id="display-title">View Name</h1>
+            <div class="head">
+                <h1>View Name</h1>
+                <button class="add-task">
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17,13H13V17H11V13H7V11H11V7H13V11H17M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" /></svg>
+                    <span>Add task</span>
+                </button>
+            </div>
+            
+            <div class="task-container">
+                <div class="task">
+
+                </div>
+            </div>
         </div>
+        <dialog class="modal-form">
+            <form method="dialog" id="task-form">
+                <label for="task-title">
+                    <input type="text" name="task-title" id="task-title" placeholder="Title" required>
+                </label>
+                <label for="task-desc">
+                    <textarea name="task-desc" id="task-desc" required>Description</textarea>
+                </label>
+                <div class="other-details">
+                    <label for="task-due-date">
+                        <input type="date" name="task-due-date" id="task-due-date" required>
+                    </label>
+                    <label for="task-priority">
+                        <select name="task-priority" id="task-priority">
+                            <option value="high">High Priority</option>
+                            <option value="medium">Medium Priority</option>
+                            <option value="low">Low Priority</option>
+                        </select>
+                    </label>
+                </div>
+                <hr />
+                <div class="form-options">
+                    <button type="submit" id="submit-form">Submit</button>
+                    <button class="cancel" type="button">Cancel</button>
+                </div>
+            </form>
+        </dialog>
     </div>
 </body>
 </html>
