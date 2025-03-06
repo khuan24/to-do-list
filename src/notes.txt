@@ -1,0 +1,177 @@
+class Task
+	static idCount = 0
+	
+	constructor(title, description, dueDate, priority, projectId)
+		this.title = title
+		this.description = description
+		// let the dueDate be something that can be sorted
+		this.dueDate = dueDate
+		this.priority = priority
+		this.isComplete = false
+		this.id = Task.idCount
+		this.projectId = projectId
+		
+		Task.idCount += 1
+		
+	setTitle()
+	
+	setDescription()
+	
+	set dueDate()
+	
+	setPriority()
+		
+	setIsComplete()
+		
+	
+class Project
+	static idCount
+
+	constructor(title)
+		this.title = title
+		this.tasks = []
+		this.id = Project.idCount
+		
+		Project.idCount += 1 
+	
+	setTitle()
+	
+	addTask(task)
+		// insert into the task list in sorted position so that task list if always sorted by most recent
+		
+	
+	removeTask(id)
+		// 
+	
+	findTask(id)
+		// return a task
+	
+	// take Today's date and remove completed tasks due in the past
+	// this should only be done once the first time the page is loaded in a day (done by upper management)
+	// maybe something like: save current date in a variable, if current date is not the saved date, do garbage collection
+	removeCompletedTasks(date)
+		// start in the beginning of the array until the date no longer matches
+		
+	
+	PubSub.subscribe("task-updated", PubSub.publish("project-updated", this))
+		
+collectionManager()
+	const collection = loadCollection() 
+	
+	PubSub.subscribe("project-updated", project => saveProject(project))
+	
+	addProject(title)
+	
+	removeProject(id)
+	
+	findProject(id)
+
+    moveTask(taskid, parentid, destinationid)
+        // moves the task from parent to destination
+	
+	// this is called whenever there is a signal to update task or update project
+	saveProject(project)  // save to local storage
+		// take the project id to create a key, if the key doesn't exist, create a new key data pair
+	
+	loadCollection() // return an array of projects
+	
+	getProjects()
+	
+	getAllTasks() // allow display to filter through these
+	
+formHandler() 
+	// get the modal, form, and input data
+	
+	// add event listeners to "Add project" and "Add task" buttons > open form
+	addTaskBtn.addEventListener("click", openTaskPanel) // there are more than one so will have to iterate
+	addProjectBtn.addEventListener("click", openProjectPanel)
+	
+	// populate the project drop-down menu with exisiting project options, when se
+	const names = getProjects().map(project => project.name)
+	// option value=projectID
+	displayProjectNames(names)
+	
+	// HTML: maybe add a "new project" button to the form that will display an input:text
+	// once the new project is created, the project drop down should be updated and display the project that was just created
+	
+	// add form event listeners (submit, cancel, new project)
+	taskForm.addEventListener("submit", // take input data and create new task via addTask, add the task to project via id)
+	taskFormCancelBtn.addEventListener("click", //close and reset form)
+	
+	projectForm.addEventListener("submit", // take input data and create new project via addProject())
+	projectFormCancelBtn.addEventListener("click", //close and reset form)
+
+	
+	openEditor(task) 
+		// prepopulate a task form and open it
+		
+	editForm.addEventListener("submit", () => // set task variables to new values)
+	editFormCancelBtn.addEventListener("click", //close and reset form)
+	
+taskDisplay() 
+
+	renderToday()
+		// render collection title
+		// get a list of tasks due today
+		// count amount completed, this needs to be updated in the display
+		// for each task, renderTask(task)
+	
+	renderToday()
+		// render collection title
+		// get a list of tasks due tomorrow or later
+		// keep track of currentDate, whenever date changes, add a new heading displaying date
+		// for each task, renderTask(task)
+	
+	renderCompleted() 
+		// render collection title
+		// get a list of tasks completed 
+		// keep track of currentDate, whenever date changes, add a new heading displaying date
+		// for each task, renderTask(task)
+	
+	renderProject(project)
+		// render project title
+		// keep track of currentDate, whenever date changes, add a new heading displaying date
+		// for each task in project, renderTask()
+		
+	
+	// on first load and whenever a task is added (subscribe)
+	renderTask(task)
+		//render 
+        // task.dataset.id = task.id
+		editBtn.addEventListener("click", taskFormController.openTask({title, description, dueDate, priority, projectId}))
+		deleteBtn.addEventListener("click",  (taskID) => // task parent will do removeTask(taskID))
+		
+mainController()
+	// add event listeners to sidebar options and render using taskDisplay functions
+	
+	//close and open sidebar
+		
+	
+	
+
+	
+Edit process:
+- edit button is rendered and binded with taskDisplay.renderTask()
+- user clicks the edit button
+- taskFormHandler.openTask() triggers and passes the data
+    > open taskForm dialog
+    > pre-populate task details using data
+- user makes change(s)
+- user clicks "submit" > 
+    > save the form values in object literal
+        const updates = {title, description, dueDate, priority, projectId}
+    > passes new data and the task-id to the collection manager
+        > update the task: findProject().findTask().update(updates)
+            > sends task update signal then project update signal
+        > if the projectId is different, moveTask()
+            > Save the destination project
+        > Save the parent project
+    > changeTaskRender on task update signal
+        > if task is moved off the current view
+            > remove from HTML
+        > if task stays on the current view 
+            > update text content
+	
+	
+	
+	
