@@ -38,7 +38,8 @@ body {
     --medium-priority-clr: #FFB156;
     --low-priority-clr: #5BBAFF;
     --deactivated-clr: #BCBCBC;
-
+    --drop-shadow-clr: rgba(0, 0, 0, 0.18);
+    --faded-bg-clr: #F5F5F5F5;
 
     font-family: "Inter", system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     font-weight: var(--regular);
@@ -183,3 +184,89 @@ nav.tasks {
     font-weight: bold;
 }
 
+.modal-form {
+    padding: 1rem;
+    border: none;
+    border-radius: 10px;
+    box-shadow: var(--drop-shadow-clr) 5px 5px 10px;
+    width: 45%;
+}
+
+.modal-form::backdrop {
+    background-color: transparent;
+}
+
+.modal-form > * {
+    width: 100%;
+}
+
+.modal-form textarea, .modal-form .other-details {
+    margin-top: 1rem;
+}
+
+.modal-form .other-details {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+input, textarea, select {
+    outline: none;
+    border: none;
+    color: var(--no-emphasis-clr);
+}
+
+.modal-form input[type="text"], .modal-form textarea {
+    display: block;
+    width: 100%;
+}
+
+#task-title, #project-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding-top: 0.4rem;
+}
+
+textarea {
+    resize: none;
+}
+
+hr {
+    margin: 0.8rem 0;
+    color: var(--deactivated-clr);
+}
+
+.modal-form .bottom-panel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-form select, .modal-form input[type="date"] {
+    background-color: var(--faded-bg-clr);
+    border-radius: 5px;
+    padding: 0.4em;
+    min-width: 15ch;
+    max-width: fit-content;
+    min-height: 2rem;
+}
+
+.modal-form button {
+    padding: 0.4em 0.8em;
+}
+
+button[type="submit"] {
+    color: var(--primary-accent-clr);
+    background-color: var(--selected-clr);
+}
+
+button.cancel {
+    color: var(--no-emphasis-clr);
+    background-color: var(--faded-bg-clr);
+}
+
+.modal-form .form-options {
+    display: flex;
+    gap: 1rem;
+    justify-self: flex-end;
+}

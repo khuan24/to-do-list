@@ -64,20 +64,18 @@
         <dialog class="modal-form" id="task-dialog">
             <form method="dialog" id="task-form">
                 <label for="task-title">
-                    <input type="text" name="task-title" id="task-title" placeholder="Task Title" required>
+                    <input type="text" name="task-title" id="task-title" placeholder="Task name" required>
                 </label>
                 <label for="task-desc">
-                    <textarea name="task-desc" id="task-desc" placeholder="Task Description"></textarea>
+                    <textarea name="task-desc" id="task-desc" placeholder="Task description" rows="3"></textarea>
                 </label>
                 <div class="other-details">
                     <label for="task-due-date">
-                        Due Date:
                         <input type="date" name="task-due-date" id="task-due-date" required>
                     </label>
                     <label for="task-priority">
-                        Priority:
                         <select name="task-priority" id="task-priority">
-                            <option value="none">None</option>
+                            <option value="none">No Priority</option>
                             <option value="high">High Priority</option>
                             <option value="medium">Medium Priority</option>
                             <option value="low">Low Priority</option>
@@ -85,9 +83,14 @@
                     </label>
                 </div>
                 <hr />
-                <div class="form-options">
-                    <button class="cancel" type="button">Cancel</button>
-                    <button type="submit" id="task-submit-form" form="task-form">Submit</button>
+                <div class="bottom-panel">
+                    <select name="project" id="select-project">
+                        
+                    </select>
+                    <div class="form-options">
+                        <button class="cancel" type="button">Cancel</button>
+                        <button type="submit" id="task-submit-form" form="task-form">Add Task</button>
+                    </div>
                 </div>
             </form>
         </dialog>
@@ -100,7 +103,7 @@
                 <hr />
                 <div class="form-options">
                     <button class="cancel" type="button">Cancel</button>
-                    <button type="submit" id="project-submit-form" form="project-form">Submit</button>
+                    <button type="submit" id="project-submit-form" form="project-form">Add Project</button>
                 </div>
             </form>
         </dialog>
