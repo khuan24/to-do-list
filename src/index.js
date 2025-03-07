@@ -1,6 +1,27 @@
 import "./styles.css"
 
+import {Task} from "./task.js"
 import {Project} from "./project.js"
+import { pubSub } from "./pubSub.js"
+
+const collectionManager = (function() {
+    const collection = []
+    
+    const addProject = (project) => {
+        collection.push(project)
+        pubSub.notify("project-created", project)
+        console.log(collection)
+    }
+
+    const getCollection = () => {
+        return collection
+    }
+
+    return {
+        addProject,
+        getCollection
+    }
+})()
 
 const formController = (function() {
     const closeAndReset = (modal, form) => {
@@ -36,7 +57,7 @@ const taskFormHandler = (function() {
         const dueDate = taskForm.querySelector("#task-due-date").value
         const priority = taskForm.querySelector("#task-priority").value
         const projId = projectMenu.value
-        // const task = new Task(...)
+        const task = new Task(title, description, dueDate, priority, projId)
 
         // collectionManager.findProject(projId).addTask(task)
         console.log({title, description, dueDate, priority, projId})
@@ -44,6 +65,8 @@ const taskFormHandler = (function() {
     })
 
     const updateProjectOptions = (projects) => {
+        projectMenu.replaceChildren()
+        
         for (const project of projects) {
             const option = document.createElement("option")
             option.value = project.id
@@ -52,12 +75,9 @@ const taskFormHandler = (function() {
         }
     }
 
-    // placeholders
-    const homeP = new Project("Home")
-    const schoolP = new Project("School")
-    const workP = new Project("Work")
-
-    updateProjectOptions([homeP, schoolP, workP])
+    pubSub.subscribe("project-created", () => {
+        updateProjectOptions(collectionManager.getCollection())
+    })
 
 })()
 
@@ -77,10 +97,9 @@ const projectFormHandler = (function() {
 
     projectForm.addEventListener("submit", () => {
         const title = projectForm.querySelector("#project-title").value
-        // const project = new Project(title)
+        const project = new Project(title)
 
-        // collectionManager.addProject(project)
-        console.log({title})
+        collectionManager.addProject(project)
         formController.closeAndReset(projectDialog, projectForm)
     })
 

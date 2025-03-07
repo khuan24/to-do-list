@@ -9,7 +9,6 @@ export class Project {
         this.id = Project.idCount
 
         Project.idCount += 1
-        pubSub.notify("project-created", this)
     }
 
     update(title) {
