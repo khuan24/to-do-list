@@ -233,7 +233,7 @@ textarea {
 
 hr {
     margin: 0.8rem 0;
-    color: var(--deactivated-clr);
+    border-top: var(--no-emphasis-clr) 1px;
 }
 
 .modal-form .bottom-panel {
